@@ -4,7 +4,7 @@
 
 
 
-This repository contains my **WebGPU-based lab journal** (worksheets) and my  project** for DTU 02561.
+This repository contains my **WebGPU-based lab journal** (worksheets) and my project for DTU 02561.
 
 ## 🌐 Live Page 
 
