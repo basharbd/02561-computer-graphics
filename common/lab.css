@@ -1,0 +1,190 @@
+:root{
+  --page-w: 1024px;
+  --canvas: 512px;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+.wrap{ width: var(--page-w); margin: 0 auto; }
+
+.titlebar{
+  width: var(--page-w);
+  padding: 10px 14px;
+  border-bottom: 2px solid #111;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.titlebar .title{
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.titlebar .subtitle{
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.content{
+  width: var(--page-w);
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: var(--canvas) 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+canvas{
+  width: var(--canvas);
+  height: var(--canvas);
+  display: block;
+}
+
+/* ---------- Right panel (THIS IS THE FRAME) ---------- */
+.panel{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.row{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* buttons */
+button{
+  font: inherit;
+  padding: 6px 12px;
+  border: 1px solid #777;
+  background: #f0f0f0;
+  cursor: pointer;
+  border-radius: 2px;
+}
+button:active{ transform: translateY(1px); }
+
+/* selects */
+select{
+  font: inherit;
+  padding: 6px 10px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* big text */
+.big{
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* hint text */
+.hint{
+  font-size: 16px;
+  color: #475569;
+}
+
+/* sliders */
+.sliderBlock{
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.sliderRow{
+  display: grid;
+  grid-template-columns: 170px 1fr 70px;
+  gap: 10px;
+  align-items: center;
+}
+
+.sliderRow label{
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+input[type="range"]{ width: 100%; }
+
+.val{
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- OPTIONAL inner frame (wrap sliders only) ---------- */
+.frame{
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.06);
+}
+.frame .sliderBlock{ border-top: none; padding-top: 0; }
+
+/* ---------- Mode pill + active buttons (Week2 Part3) ---------- */
+.pill{
+  font-size: 14px;
+  font-weight: 800;
+  color: #475569;
+  padding: 4px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.mode{ padding: 6px 12px; }
+.mode.active{
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 2px rgba(14,165,233,0.25);
+  background: #fff;
+}
+
+/* ---------- One-column helpers (Week3 wide canvas pages) ---------- */
+.content.onecol{ grid-template-columns: 1fr; }
+
+canvas.wide{
+  width: var(--page-w);
+  height: calc(var(--page-w) * 0.5);
+  display: block;
+}
+
+.canvasWrap{
+  position: relative;
+  width: var(--page-w);
+}
+
+.labels3{
+  position: absolute;
+  top: 8px; left: 0; right: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0 16px;
+  pointer-events: none;
+
+  font-size: 14px;
+  font-weight: 800;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+  opacity: 0.95;
+}
+.labels3 > div{ text-align: center; }
+
+.note{ font-size: 1.05em; line-height: 1.35; }
+.note p{ margin: 0 0 12px 0; }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Week 4 - Part 5</title>
+
+  <!-- ✅ Unified lab style -->
+  <link rel="stylesheet" href="../../common/lab.css">
+
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 4 - Part 5</div>
+      <div class="subtitle">
+        Phong controls + subdivision sphere + orbit camera
+      </div>
+    </div>
+
+    <div class="content">
+      <canvas id="my-canvas" width="512" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <!-- ✅ FRAME  -->
+      <div class="panel">
+        <div class="row">
+          <button id="minus" type="button">Coarsen</button>
+          <button id="plus" type="button">Subdivide</button>
+          <button id="toggle-animate" type="button">Animate</button>
+        </div>
+
+        <div class="big">Subdivision level: <span id="value">0</span></div>
+
+        <!-- sliders in a framed section (optional) -->
+        <div class="frame">
+          <div class="sliderBlock">
+            <div class="sliderRow">
+              <label for="emitted-radiance">\( \mathbf{L}_e \)</label>
+              <input type="range" id="emitted-radiance" min="0.0" max="2.0" value="1.0" step="0.01">
+              <div class="val"><span id="val-Le">1.00</span></div>
+            </div>
+
+            <div class="sliderRow">
+              <label for="ambient-radiance">\( \mathbf{L}_a \)</label>
+              <input type="range" id="ambient-radiance" min="0.0" max="1.0" value="0.00" step="0.01">
+              <div class="val"><span id="val-La">0.00</span></div>
+            </div>
+
+            <div class="sliderRow">
+              <label for="diffuse">\( k_d \)</label>
+              <input type="range" id="diffuse" min="0.0" max="1.0" value="1.0" step="0.01">
+              <div class="val"><span id="val-kd">1.00</span></div>
+            </div>
+
+            <div class="sliderRow">
+              <label for="specular">\( k_s \)</label>
+              <input type="range" id="specular" min="0.0" max="1.0" value="1.0" step="0.01">
+              <div class="val"><span id="val-ks">1.00</span></div>
+            </div>
+
+            <div class="sliderRow">
+              <label for="shininess">\( s \)</label>
+              <input type="range" id="shininess" min="0.0" max="1000.0" value="40.0" step="1.0">
+              <div class="val"><span id="val-s">40</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hint">
+          Tip: use VS Code <b>Live Server</b> (or any local server) so <code>shader.wgsl</code> loads correctly.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: live slider numbers (won't break if you don't use them) -->
+  <script>
+    (function () {
+      const bind = (id, out, fmt = (v) => Number(v).toFixed(2)) => {
+        const el = document.getElementById(id);
+        const t  = document.getElementById(out);
+        if (!el || !t) return;
+        const update = () => (t.textContent = fmt(el.value));
+        el.addEventListener("input", update);
+        update();
+      };
+      bind("emitted-radiance", "val-Le");
+      bind("ambient-radiance", "val-La");
+      bind("diffuse", "val-kd");
+      bind("specular", "val-ks");
+      bind("shininess", "val-s", (v) => String(Math.round(Number(v))));
+    })();
+  </script>
+</body>
+</html>

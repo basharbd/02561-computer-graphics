@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Week 6 - Part 3</title>
+
+  <!-- same style as your other labs -->
+  <link rel="stylesheet" href="../../common/lab.css">
+
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="text/javascript" src="../../common/genmipmap.js"></script>
+
+  <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+  <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 6 - Part 3</div>
+      <div class="subtitle">Earth texture on a sphere (UV from normals) + orbit camera + mipmaps</div>
+    </div>
+
+    <div class="content">
+      <canvas id="my-canvas" width="512" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <div class="panel">
+        <div class="pill">Sphere</div>
+
+        <div class="row">
+          <button id="minus">Coarsen</button>
+          <button id="plus">Subdivide</button>
+          <span style="margin-left:8px;">level: <b id="value">0</b></span>
+        </div>
+
+        <div class="row">
+          <button id="toggle-animate">Animate</button>
+        </div>
+
+        <div class="pill" style="margin-top:12px;">Texture sampling</div>
+
+        <div class="row">
+          <label for="texture-wrapping">Wrapping</label>
+          <select id="texture-wrapping">
+            <option value="repeat" selected>repeat</option>
+            <option value="clamp-to-edge">clamp-to-edge</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label for="mag-filter">Mag filter</label>
+          <select id="mag-filter">
+            <option value="nearest">nearest</option>
+            <option value="linear" selected>linear</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label for="min-filter">Min filter</label>
+          <select id="min-filter">
+            <option value="nearest">nearest</option>
+            <option value="linear" selected>linear</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label for="toggle-mipmap">Mipmapping</label>
+          <input type="checkbox" id="toggle-mipmap" checked />
+        </div>
+
+        <div class="row">
+          <label for="mipmap-filter">Mipmap filter</label>
+          <select id="mipmap-filter">
+            <option value="nearest">nearest</option>
+            <option value="linear" selected>linear</option>
+          </select>
+        </div>
+
+        <div class="hint" style="margin-top:12px;">
+          Put <code>earth.jpg</code> in <code>week06/assets/</code>.
+          Use Live Server so <code>shader.wgsl</code> and the image load correctly.
+        </div>
+
+        <hr style="margin:14px 0;">
+
+        <div class="pill">Filtering choice (minification)</div>
+        <p>
+          Earth has high-frequency details (mountains). During rotation the texture gets <b>minified</b>
+          in many screen regions which causes shimmering/aliasing. A good compromise is:
+          <b>minFilter = linear</b> + <b>mipmapping enabled</b> + <b>mipmapFilter = linear</b>
+          (trilinear filtering). This strongly reduces shimmering without overly blurring the texture.
+        </p>
+
+        <div class="pill">UV from normals</div>
+        <p>
+          We treat the (interpolated) normal as a point on the unit sphere and compute spherical coordinates.
+          We use <code>atan2</code> for the longitude (correct signs) and <code>acos</code> for the latitude,
+          then map them to <code>(u,v)</code> in <code>[0,1]</code>.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project – Planar Reflector – Part 3</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        h1 { margin: 0 0 5px 0; font-size: 2em; }
+        h3 { margin: 0 0 15px 0; font-weight: bold; font-size: 1.1em; }
+
+        canvas {
+            display: block;
+            border: 1px solid #333;
+            margin-bottom: 0;
+        }
+
+        .container { width: 860px; }
+
+        .panel {
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 0 0 5px 5px;
+            margin-top: -4px;
+            box-sizing: border-box;
+        }
+
+        .status-box {
+            background-color: #e0e0ff;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            line-height: 1.4em;
+        }
+
+        .status-box strong { font-weight: bold; }
+
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .row label { width: 150px; font-size: 0.95em; }
+        input[type="range"] { flex-grow: 1; }
+        
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Project – Planar Reflector</h1>
+    <h3>Part 3 — Stencil Clipping</h3>
+
+    <canvas id="my-canvas" width="860" height="540"></canvas>
+
+    <div class="panel">
+        <div class="status-box">
+            <strong>Technique:</strong> Stencil Buffer.<br/>
+            1. Write Ground to Stencil (Mask).<br/>
+            2. Draw Reflected Teapot (Only where Stencil == 1).<br/>
+            3. Draw Transparent Ground (Blend).<br/>
+            4. Draw Real Teapot.
+        </div>
+
+        <div class="row"><label>Le (emitted)</label> <input id="emitted-radiance" type="range" min="0" max="5" step="0.01" value="2.0"></div>
+        <div class="row"><label>La (ambient)</label> <input id="ambient-radiance" type="range" min="0" max="1" step="0.01" value="0.2"></div>
+        <div class="row"><label>kd (diffuse)</label> <input id="diffuse" type="range" min="0" max="2" step="0.01" value="1.0"></div>
+        <div class="row"><label>ks (specular)</label> <input id="specular" type="range" min="0" max="2" step="0.01" value="0.5"></div>
+        <div class="row"><label>shininess</label> <input id="shininess" type="range" min="1" max="200" step="1" value="80"></div>
+        <div class="row"><label>ground alpha</label> <input id="ground-alpha" type="range" min="0.0" max="1.0" step="0.01" value="0.5"></div>
+        
+        <button id="toggle-jump">Toggle Animation</button>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../common/MV.js"></script>
+<script type="text/javascript" src="../../common/OBJParser.js"></script>
+<script id="wgsl" type="x-shader/x-wgsl" src="shader.wgsl"></script>
+<script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>

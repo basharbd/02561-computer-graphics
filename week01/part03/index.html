@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Week 1 - Part 3</title>
+
+  <link rel="stylesheet" href="../../common/lab.css">
+
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="module" src="main.js"></script>
+  <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 1 - Part 3</div>
+      <div class="subtitle">Triangle + vertex color interpolation</div>
+    </div>
+
+    <div class="content">
+      <canvas id="my-canvas" width="512" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <div class="panel">
+        <div class="pill">What to expect</div>
+
+        <div>
+          A single triangle rendered with smoothly interpolated vertex colors
+          (RGB at the three corners).
+        </div>
+
+        <div class="hint" style="margin-top:8px;">
+          Tip: use a local web server (e.g. <b>VS Code → Live Server</b>) so
+          <code>shader.wgsl</code> loads correctly (avoid <code>file://</code> / CORS issues).
+          Alternative: <code>python3 -m http.server</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
