@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Week 7 - Part 1</title>
+
+  <link rel="stylesheet" href="../../common/lab.css" />
+
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="text/javascript" src="../../common/genmipmap.js"></script>
+
+  <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+  <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 7 - Part 1</div>
+      <div class="subtitle">Cube map on a sphere (sample with world normal)</div>
+    </div>
+
+    <div class="content">
+      <canvas id="my-canvas" width="512" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <div class="panel">
+        <div class="pill">Controls</div>
+
+        <div class="row">
+          <button id="toggle-animate">Animate</button>
+        </div>
+
+        <div class="pill" style="margin-top:12px;">Sampling</div>
+
+        <div class="row">
+          <label for="texture-wrapping">Wrapping</label>
+          <select id="texture-wrapping">
+            <option value="repeat">repeat</option>
+            <option value="clamp-to-edge" selected>clamp-to-edge</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label for="mag-filter">Mag filter</label>
+          <select id="mag-filter">
+            <option value="nearest">nearest</option>
+            <option value="linear" selected>linear</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label for="min-filter">Min filter</label>
+          <select id="min-filter">
+            <option value="nearest">nearest</option>
+            <option value="linear" selected>linear</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label for="toggle-mipmap">Mipmapping</label>
+          <input type="checkbox" id="toggle-mipmap" checked />
+        </div>
+
+        <div class="row">
+          <label for="mipmap-filter">Mipmap filter</label>
+          <select id="mipmap-filter">
+            <option value="nearest">nearest</option>
+            <option value="linear" selected>linear</option>
+          </select>
+        </div>
+
+        <div class="hint" style="margin-top:12px;">
+          Cube images must be here: <code>week07/textures/cm_*.png</code><br/>
+          From <code>part01</code> we load them as <code>../textures/...</code>.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
