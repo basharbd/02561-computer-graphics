@@ -2,9 +2,9 @@
 
 # 02561 Computer Graphics (DTU) — Lab Journal + Project (WebGPU)
 
-**Course:** 02561 Computer Graphics, Technical University of Denmark (DTU), Fall 2025
 
-This repository contains my **WebGPU-based lab journal** (worksheets) and my **minor project** for DTU 02561.
+
+This repository contains my **WebGPU-based lab journal** (worksheets) and my  project** for DTU 02561.
 
 ## 🌐 Live Page 
 
