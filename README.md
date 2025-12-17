@@ -6,13 +6,13 @@
 
 This repository contains my **WebGPU-based lab journal** (worksheets) and my **minor project** for DTU 02561.
 
-## 🌐 Live Pages (Unlisted Links)
+## 🌐 Live Page 
 
 
 
 
 - **Lab Journal (GitHub Pages):** [https://basharbd.github.io/02561-computer-graphics/](https://basharbd.github.io/02561-computer-graphics/)
-- **Project Page (Planar Reflector):** [https://basharbd.github.io/02561-computer-graphics/project/planar_reflector/](https://basharbd.github.io/02561-computer-graphics/project/planar_reflector/)
+- **Project Page (Planar Reflector):** [https://basharbd.github.io/02561-computer-graphics/project/planar_reflector/](https://basharbd.github.io/02561-computer-graphics/project/)
 
 > The site is designed to run directly in the browser via GitHub Pages (no extra build steps).
 
