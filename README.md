@@ -12,7 +12,7 @@ This repository contains my **WebGPU-based lab journal** (worksheets) and my **m
 
 
 - **Lab Journal (GitHub Pages):** [https://basharbd.github.io/02561-computer-graphics/](https://basharbd.github.io/02561-computer-graphics/)
-- **Project Page (Planar Reflector):** [https://basharbd.github.io/02561-computer-graphics/project/planar_reflector/](https://basharbd.github.io/02561-computer-graphics/project/)
+- **Project Page (Planar Reflector):** [https://basharbd.github.io/02561-computer-graphics/project/](https://basharbd.github.io/02561-computer-graphics/project/)
 
 > The site is designed to run directly in the browser via GitHub Pages (no extra build steps).
 
