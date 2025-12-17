@@ -42,7 +42,7 @@ Each lab part follows the same template:
 
 ---
 
-## ✅ Minor Project: Planar Reflector in WebGPU
+## ✅ Project: Planar Reflector in WebGPU
 
 **Title:** *Planar Reflector in WebGPU — Blending, Stencil Masking, and Oblique Near-Plane Clipping*
 
