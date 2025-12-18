@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Week 6 - Part 1</title>
+
+  <!-- ✅ Unified lab style -->
+  <link rel="stylesheet" href="../../common/lab.css">
+
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="module" src="main.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 6 - Part 1</div>
+      <div class="subtitle">Procedural checkerboard texture on a rectangle (repeat + nearest)</div>
+    </div>
+
+    <div class="content">
+      <canvas id="my-canvas" width="512" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <div class="panel">
+        <div class="pill">What you should see</div>
+        <div>
+          A rectangle “floor” with a black/white checkerboard texture.
+          The pattern repeats <b>4×</b> across width and <b>10×</b> along length,
+          using <b>repeat</b> addressing and <b>nearest</b> filtering.
+        </div>
+        <div class="hint" style="margin-top:10px;">
+          Tip: run a local server so <code>shader.wgsl</code> loads (Live Server or <code>python3 -m http.server</code>).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
