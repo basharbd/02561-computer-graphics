@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Week 4 - Part 1</title>
+
+  <link rel="stylesheet" href="../../common/lab.css">
+
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 4 - Part 1</div>
+      <div class="subtitle">Subdivision sphere (tetrahedron → subdivision) + buttons</div>
+    </div>
+
+    <div class="content">
+      <canvas id="my-canvas" width="512" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <div class="panel frame">
+        <div class="row">
+          <button id="minus">Coarsen</button>
+          <button id="plus">Subdivide</button>
+        </div>
+
+        <div class="big">
+          Subdivision level: <span id="value">0</span>
+        </div>
+
+        <div class="sliderBlock">
+          <div class="hint">
+            Increase the level to refine the tetrahedron into a smoother unit sphere.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
