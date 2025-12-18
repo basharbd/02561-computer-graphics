@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Week 3 - Part 3</title>
+
+  <link rel="stylesheet" href="../../common/lab.css">
+
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+
+  <!-- MathJax (for LaTeX equations) -->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 3 - Part 3</div>
+      <div class="subtitle">Matrix concatenation (Parts 1 &amp; 2)</div>
+    </div>
+
+    <!-- one-column layout (wide canvas + note) -->
+    <div class="content onecol">
+      <canvas class="wide" id="my-canvas" width="1024" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <div class="panel frame note">
+        <p>
+          We used a small depth remapping matrix \(\mathbf{M}_{st}\) to match WebGPU’s \([0,1]\) depth range:
+          \[
+            \mathbf{M}_{st} =
+            \begin{bmatrix}
+              1&0&0&0\\
+              0&1&0&0\\
+              0&0&\tfrac{1}{2}&\tfrac{1}{2}\\
+              0&0&0&1
+            \end{bmatrix}
+          \]
+        </p>
+
+        <p>
+          <b>Part 1 (orthographic / isometric)</b><br/>
+          Projection:
+          \[
+            \mathbf{P}_{ortho}=\mathrm{ortho}(l,r,b,t,n,f)
+          \]
+          View (isometric look direction toward the cube diagonal):
+          \[
+            \mathbf{V}_{iso}=\mathrm{lookAt}(\mathbf{e},\mathbf{a},\mathbf{u})
+          \]
+          and the cube is already in \([0,1]^3\), so \(\mathbf{M}=\mathbf{I}\).
+          The composite matrix used in the vertex shader was:
+          \[
+            \mathbf{MVP}_{iso}=\mathbf{M}_{st}\,\mathbf{P}_{ortho}\,\mathbf{V}_{iso}\,\mathbf{I}
+          \]
+        </p>
+
+        <p>
+          <b>Part 2 (perspective / one-, two-, three-point)</b><br/>
+          Let \(\mathbf{C}=\mathrm{translate}(-\tfrac12,-\tfrac12,-\tfrac12)\) be the centering transform.
+          The three model matrices were:
+          \[
+          \begin{aligned}
+            \mathbf{M}_1 &= \mathrm{translate}(t_1)\,\mathbf{C} \\
+            \mathbf{M}_2 &= \mathrm{translate}(t_2)\,\mathbf{C} \\
+            \mathbf{M}_3 &= \mathrm{translate}(t_3)\,\mathrm{rotateY}(\alpha)\,\mathrm{rotateX}(\beta)\,\mathbf{C}
+          \end{aligned}
+          \]
+          The view matrix:
+          \[
+            \mathbf{V}=\mathrm{lookAt}(\mathbf{e},\mathbf{a},\mathbf{u})
+          \]
+          The projection matrix (pinhole camera):
+          \[
+            \mathbf{P}_{persp}=\mathrm{perspective}(fovy, aspect, near, far)
+          \]
+          Finally, each cube used:
+          \[
+            \mathbf{MVP}_i=\mathbf{M}_{st}\,\mathbf{P}_{persp}\,\mathbf{V}\,\mathbf{M}_i \quad (i=1,2,3)
+          \]
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
