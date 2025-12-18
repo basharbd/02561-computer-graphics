@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Week 10 - Part 4</title>
+
+  <link rel="stylesheet" href="../../common/lab.css" />
+
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="text/javascript" src="../../common/OBJParser.js"></script>
+  <script type="text/javascript" src="../assets/quaternion.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 10 - Part 4</div>
+      <div class="subtitle">Virtual Trackball with Spinning (Momentum)</div>
+    </div>
+
+    <div class="content">
+      <canvas id="my-canvas" width="512" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <div class="panel">
+        <div class="pill">Camera Controls</div>
+        <div class="row">
+          <label for="camera-mode">Interaction Mode:</label>
+          <select id="camera-mode">
+            <option value="orbit">Orbit (Spin)</option>
+            <option value="dolly">Dolly (Zoom)</option>
+            <option value="pan">Pan (Move)</option>
+          </select>
+        </div>
+
+        <div class="pill">Lighting Parameters</div>
+        
+        <div class="row">
+          <label for="emitted-radiance">L_e (Emitted):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="emitted-radiance" min="0.0" max="2.0" value="1.0" step="0.01">
+          <span>2.0</span>
+        </div>
+
+        <div class="row">
+          <label for="ambient-radiance">L_a (Ambient):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="ambient-radiance" min="0.0" max="1.0" value="0.0" step="0.01">
+          <span>1.0</span>
+        </div>
+
+        <div class="row">
+          <label for="diffuse">k_d (Diffuse):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="diffuse" min="0.0" max="1.0" value="1.0" step="0.01">
+          <span>1.0</span>
+        </div>
+
+        <div class="row">
+          <label for="specular">k_s (Specular):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="specular" min="0.0" max="1.0" value="1.0" step="0.01">
+          <span>1.0</span>
+        </div>
+
+        <div class="row">
+          <label for="shininess">Shininess (s):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="shininess" min="0.0" max="1000.0" value="120.0" step="1.0">
+          <span>1e3</span>
+        </div>
+        
+        <div class="pill">Instructions</div>
+        <p class="explanation">
+          Flick the mouse in Orbit mode to start spinning. Click to stop.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
