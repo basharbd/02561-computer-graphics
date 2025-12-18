@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Week 9 - Part 5</title>
+
+  <link rel="stylesheet" href="../../common/lab.css" />
+
+  <script type="text/javascript" src="../../common/OBJParser.js"></script>
+  <script type="text/javascript" src="../../common/MV.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script id="wgsl" type="x-shader" src="shader.wgsl"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <div class="title">Week 9 - Part 5</div>
+      <div class="subtitle">Shadow Mapping vs. Projection Shadows</div>
+    </div>
+
+    <div class="content">
+      <canvas id="my-canvas" width="512" height="512">
+        Please use a browser that supports HTML5 canvas.
+      </canvas>
+
+      <div class="panel">
+        <div class="pill">Comparison</div>
+        <p class="explanation">
+          <strong>Projection Shadows:</strong><br/>
+          <em>Advantages:</em> Fast, simple math (just a matrix multiply), sharp edges (good for hard shadows).<br/>
+          <em>Disadvantages:</em> Requires a flat surface (planar), no self-shadowing, z-fighting issues, multipass rendering can be tricky.
+        </p>
+        <p class="explanation" style="margin-top: 8px;">
+          <strong>Shadow Mapping:</strong><br/>
+          <em>Advantages:</em> Works on arbitrary geometry (any shape receiver), supports self-shadowing, decoupled from geometry complexity.<br/>
+          <em>Disadvantages:</em> Aliasing (blocky edges/shadow acne), requires extra texture memory & render pass, bias tuning needed.
+        </p>
+
+        <div class="pill">Animation</div>
+        <div class="row">
+          <button id="toggle-animate-light">Animate Light</button>
+          <button id="toggle-animate-teapot">Animate Teapot</button>
+        </div>
+
+        <div class="pill">Lighting Parameters</div>
+        
+        <div class="row">
+          <label for="emitted-radiance">L_e (Emitted):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="emitted-radiance" min="0.0" max="2.0" value="1.0" step="0.01">
+          <span>2.0</span>
+        </div>
+
+        <div class="row">
+          <label for="ambient-radiance">L_a (Ambient):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="ambient-radiance" min="0.0" max="1.0" value="0.0" step="0.01">
+          <span>1.0</span>
+        </div>
+
+        <div class="row">
+          <label for="diffuse">k_d (Diffuse):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="diffuse" min="0.0" max="1.0" value="1.0" step="0.01">
+          <span>1.0</span>
+        </div>
+
+        <div class="row">
+          <label for="specular">k_s (Specular):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="specular" min="0.0" max="1.0" value="1.0" step="0.01">
+          <span>1.0</span>
+        </div>
+
+        <div class="row">
+          <label for="shininess">Shininess (s):</label>
+        </div>
+        <div class="row">
+          <span>0.0</span>
+          <input type="range" id="shininess" min="0.0" max="1000.0" value="120.0" step="1.0">
+          <span>1e3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
